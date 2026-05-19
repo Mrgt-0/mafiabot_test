@@ -78,7 +78,7 @@ async def main():
     logger.info("✅ БД инициализирована")
 
     logger.info("🚀 Бот успешно запущен!")
-
+    #await bot.delete_webhook(drop_pending_updates=True) удаляет вебхук, чтобы запустить бота локально
     await dp.start_polling(bot)
 
 

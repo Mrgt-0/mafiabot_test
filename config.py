@@ -8,4 +8,4 @@ BANK = "Сбербанк"
 #GROUP_ID = TEST_GROUP_ID // убрала чтобы не спамить сообщениями в группу. Потом вернуть!
 ANNOUNCE_TOPIC_ID = 5912
 
-WEBHOOK_URL = os.environ.get("https://mafiabot-test-oh6l.onrender.com")
+WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "https://mafiabot-test-oh6l.onrender.com")

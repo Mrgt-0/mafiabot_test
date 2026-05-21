@@ -212,9 +212,28 @@ async def cmd_profile(message: Message, command: CommandObject):
 
     await show_other_profile(message, args)
 
+buttons = [
+    "🕵️ Записаться на игру",
+    "🧾 Список игроков",
+    "👤 Мой профиль",
+    "💳 Оплатить",
+    "📊 Статистика",
+    "📜 Мои игры",
+    "📜 Все игры",
+    "🏆 Рейтинг",
+    "🛒 Магазин",
+    "⚖ Панель судьи",
+    "📋 РЕГЛАМЕНТ",
+    "🚀 Запустить бота / Главное меню",
+    "🛠 Админ-панель (только для админов)"
+]
 
 async def show_other_profile(message: Message, target: str):
     """Показывает профиль другого игрока по нику или ID"""
+
+    if target in buttons:
+        return
+
     try:
         # Пробуем интерпретировать как числовой ID
         target_id = int(target)
@@ -465,6 +484,9 @@ async def search_player_result(message: Message, state: FSMContext):
         user_info = await get_user_by_id(user_id)
     except ValueError:
         user_info = await get_user_by_nickname(search_query)
+
+    if search_query in buttons:
+        return
 
     if not user_info:
         await message.answer(f"❌ Игрок с ником/ID '{search_query}' не найден.\nПопробуйте снова.")
